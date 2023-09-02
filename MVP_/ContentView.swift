@@ -22,11 +22,11 @@ struct ContentView: View {
                 .frame(width: 150, height: 150)
                 .foregroundColor(.black.opacity(0.85))
             
-            Text("노트정리를 바꾸다.")
+            Text("문서 정리의 \(Text("판도").fontWeight(.bold))를 바꾸다")
                 .font(.system(size: 20, weight: .semibold))
                 .foregroundColor(.black.opacity(0.85))
             
-            Text("\(Text("N/O").foregroundColor(Color.purple))Write")
+            Text("\(Text("판").foregroundColor(Color.purple))\(Text("서").font(.system(size:30) .bold())) 도")
                 .font(.system(size: 50, weight: .semibold))
                 .foregroundColor(.black.opacity(0.85))
                 .padding(.bottom,40)

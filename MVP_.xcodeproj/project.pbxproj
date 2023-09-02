@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABA1AE9A2AA0DA9500394191 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1AE992AA0DA9500394191 /* StartView.swift */; };
+		ABBBB9C42AA3964300041CE9 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBBB9C32AA3964300041CE9 /* CameraView.swift */; };
+		ABBBB9C72AA3A0A700041CE9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ABBBB9C62AA3A0A700041CE9 /* Alamofire */; };
+		ABBBB9CA2AA3A0E100041CE9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = ABBBB9C92AA3A0E100041CE9 /* SwiftyJSON */; };
+		ABBBB9CD2AA3A1FE00041CE9 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = ABBBB9CC2AA3A1FE00041CE9 /* OpenAI */; };
 		ABFDF56A2A9B93A400E19464 /* MVP_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFDF5692A9B93A400E19464 /* MVP_App.swift */; };
 		ABFDF56C2A9B93A400E19464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFDF56B2A9B93A400E19464 /* ContentView.swift */; };
 		ABFDF56E2A9B93A500E19464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFDF56D2A9B93A500E19464 /* Assets.xcassets */; };
@@ -14,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ABA1AE992AA0DA9500394191 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		ABBBB9C32AA3964300041CE9 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		ABFDF5662A9B93A400E19464 /* MVP_.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP_.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFDF5692A9B93A400E19464 /* MVP_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVP_App.swift; sourceTree = "<group>"; };
 		ABFDF56B2A9B93A400E19464 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +33,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBBB9CA2AA3A0E100041CE9 /* SwiftyJSON in Frameworks */,
+				ABBBB9CD2AA3A1FE00041CE9 /* OpenAI in Frameworks */,
+				ABBBB9C72AA3A0A700041CE9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +63,8 @@
 			children = (
 				ABFDF5692A9B93A400E19464 /* MVP_App.swift */,
 				ABFDF56B2A9B93A400E19464 /* ContentView.swift */,
+				ABA1AE992AA0DA9500394191 /* StartView.swift */,
+				ABBBB9C32AA3964300041CE9 /* CameraView.swift */,
 				ABFDF56D2A9B93A500E19464 /* Assets.xcassets */,
 				ABFDF56F2A9B93A500E19464 /* Preview Content */,
 			);
@@ -83,6 +95,11 @@
 			dependencies = (
 			);
 			name = MVP_;
+			packageProductDependencies = (
+				ABBBB9C62AA3A0A700041CE9 /* Alamofire */,
+				ABBBB9C92AA3A0E100041CE9 /* SwiftyJSON */,
+				ABBBB9CC2AA3A1FE00041CE9 /* OpenAI */,
+			);
 			productName = MVP_;
 			productReference = ABFDF5662A9B93A400E19464 /* MVP_.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +128,11 @@
 				Base,
 			);
 			mainGroup = ABFDF55D2A9B93A400E19464;
+			packageReferences = (
+				ABBBB9C52AA3A0A700041CE9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				ABBBB9C82AA3A0E100041CE9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				ABBBB9CB2AA3A1FE00041CE9 /* XCRemoteSwiftPackageReference "OpenAI" */,
+			);
 			productRefGroup = ABFDF5672A9B93A400E19464 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABA1AE9A2AA0DA9500394191 /* StartView.swift in Sources */,
 				ABFDF56C2A9B93A400E19464 /* ContentView.swift in Sources */,
 				ABFDF56A2A9B93A400E19464 /* MVP_App.swift in Sources */,
+				ABBBB9C42AA3964300041CE9 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +294,7 @@
 				DEVELOPMENT_TEAM = C552WQXUWD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +324,7 @@
 				DEVELOPMENT_TEAM = C552WQXUWD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +365,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ABBBB9C52AA3A0A700041CE9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.0;
+			};
+		};
+		ABBBB9C82AA3A0E100041CE9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		ABBBB9CB2AA3A1FE00041CE9 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ABBBB9C62AA3A0A700041CE9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABBBB9C52AA3A0A700041CE9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		ABBBB9C92AA3A0E100041CE9 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABBBB9C82AA3A0E100041CE9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		ABBBB9CC2AA3A1FE00041CE9 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABBBB9CB2AA3A1FE00041CE9 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ABFDF55E2A9B93A400E19464 /* Project object */;
 }
