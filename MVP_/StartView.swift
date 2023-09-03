@@ -1,11 +1,16 @@
 import SwiftUI
 import VisionKit
 import Vision
+import SwiftyJSON
+import Alamofire
 
 struct StartView: View {
     @State private var recognizedText = ""
     @State private var summaryText = ""
     @State private var isShowingScannerView = false
+    @State private var isSummarizing = false // Add this line
+    
+    let openAIApiToken = "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"
     
     var body: some View {
         NavigationView {
@@ -14,22 +19,22 @@ struct StartView: View {
                     TextArea(text: $recognizedText, placeholder:"스캔하여 인식된 택스트가 이곳에 표시됩니다.먼저 스캔 시작하기를 눌러 글자를 스캔하세요!!")
                         .frame(width: geometry.size.width, height: geometry.size.height/1.2)
                         .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.black, lineWidth: 5)
-                            )
-
-                            .padding(.top, 20)
-                    }
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 5)
+                        )
+                    
+                        .padding(.top, 20)
+                }
                 GeometryReader { geometry in
-                    TextArea(text: $recognizedText, placeholder:"GPT가 요약한 문서의 내용이 이곳에 표시됩니다! 요약 정리 시작하기를 눌러 내용을 정리해보세요!ㄱ")
+                    TextArea(text: $summaryText, placeholder:"GPT가 요약한 문서의 내용이 이곳에 표시됩니다! 요약 정리 시작하기를 눌러 내용을 정리해보세요!")
                         .frame(width: geometry.size.width, height: geometry.size.height/1.5)
                         .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.black, lineWidth: 5)
-                            )
-
-                            .padding(.top, 5)
-                    }
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 5)
+                        )
+                    
+                        .padding(.top, 5)
+                }
                 Button(action:{
                     self.isShowingScannerView = true
                 }) {
@@ -40,7 +45,13 @@ struct StartView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                 }
-                NavigationLink(destination: AISummaryView(recognizedText: $recognizedText)) {
+                Button(action:{
+                    Task {
+                        isSummarizing = true // Add this line
+                        summarizeAndParse(recognizedText: self.recognizedText)
+                        isSummarizing = false // Add this line
+                    }
+                }) {
                     Text("\(Image(systemName:"square.and.pencil.circle.fill"))   요약정리 시작하기")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -49,44 +60,84 @@ struct StartView: View {
                         .cornerRadius(10)
                 }
                 .padding(.bottom, 50)
-
+                if isSummarizing { // Add these lines to show a loading indicator while summarizing.
+                    ProgressView()
+                }
+                
             }.padding()
             // Display ScannerCoordinator as sheet when isShowingScannerView is true.
             // After scanning and recognizing text, navigate to ConfirmTextView with recognized text.
             // Dismiss the sheet after navigating to ConfirmTextView.
-            .sheet(isPresented:$isShowingScannerView){
-                NavigationView{
-                    ScannerCoordinator(recognizedText:self.$recognizedText) { text in
-                        self.recognizedText = text
+                .sheet(isPresented:$isShowingScannerView){
+                    NavigationView{
+                        ScannerCoordinator(recognizedText:self.$recognizedText) { text in
+                            self.recognizedText = text
+                        }
                     }
                 }
-            }
         }
+        
         .navigationViewStyle(StackNavigationViewStyle())
-}
-
-struct ScannerCoordinator : UIViewControllerRepresentable {
-
-   @Binding var recognizedText:String
+    }
+    func summarizeAndParse(recognizedText: String) {
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(openAIApiToken)",
+            "Content-Type": "application/json"
+        ]
+        
+        let parameters: [String : Any] = [
+            "engine": "gpt-3.5-turbo",
+            "messages": [
+                ["role":"user",
+                 "content":"\($recognizedText)를 요약하고, 핵심만 정리해줘. 단, 정리애서 중요한 내용이 하나라도 빠져선 안되고, 너가 대답은 하지 말고, 오로지 요약하고, 핵심만 정리해서 보내."]
+            ],
+            "temperature": 0.2,
+            "max_tokens": 60
+        ]
+        
+        AF.request("https://api.openai.com/v1/engines/gpt-3.5-turbo/completions", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    print("Response: \(value)") // Add this line to print the raw response.
+                    let json = JSON(value)
+                    if let contentCompletion = json["choices"][0]["message"]["content"].string {
+                        DispatchQueue.main.async {
+                            self.summaryText += contentCompletion.trimmingCharacters(in:.whitespacesAndNewlines)
+                        }
+                    } else {
+                        print("Error in parsing the response.")
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+    }
     
-   var completionHandler:(String)->Void
-
-   func makeCoordinator() -> Coordinator {
-       return Coordinator(recognizedText: $recognizedText, completionHandler: completionHandler)
-   }
-
-   func makeUIViewController(context: Context) -> VNDocumentCameraViewController {
-      let viewController = VNDocumentCameraViewController()
-      viewController.delegate = context.coordinator
-      return viewController
-  }
-
-  func updateUIViewController(_ uiViewController:
-                                  VNDocumentCameraViewController, context:
-                                  Context) {}
-
-}
-
+    
+    
+    struct ScannerCoordinator : UIViewControllerRepresentable {
+        
+        @Binding var recognizedText:String
+        
+        var completionHandler:(String)->Void
+        
+        func makeCoordinator() -> Coordinator {
+            return Coordinator(recognizedText: $recognizedText, completionHandler: completionHandler)
+        }
+        
+        func makeUIViewController(context: Context) -> VNDocumentCameraViewController {
+            let viewController = VNDocumentCameraViewController()
+            viewController.delegate = context.coordinator
+            return viewController
+        }
+        
+        func updateUIViewController(_ uiViewController:
+                                    VNDocumentCameraViewController, context:
+                                    Context) {}
+        
+    }
+    
     class Coordinator:NSObject,VNDocumentCameraViewControllerDelegate{
         
         @Binding var recognizedText:String
@@ -181,16 +232,11 @@ struct ScannerCoordinator : UIViewControllerRepresentable {
             return recognizedStrings.joined(separator:"")
             
         }
-        
     }
 }
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        Group{
-
-                StartView()
-
-            }
+        StartView()
     }
 }
