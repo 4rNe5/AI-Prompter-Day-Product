@@ -12,6 +12,11 @@
 		ABBBB9C72AA3A0A700041CE9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ABBBB9C62AA3A0A700041CE9 /* Alamofire */; };
 		ABBBB9CA2AA3A0E100041CE9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = ABBBB9C92AA3A0E100041CE9 /* SwiftyJSON */; };
 		ABBBB9CD2AA3A1FE00041CE9 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = ABBBB9CC2AA3A1FE00041CE9 /* OpenAI */; };
+		ABBBB9D02AA3C40700041CE9 /* MLKitBarcodeScanning in Frameworks */ = {isa = PBXBuildFile; productRef = ABBBB9CF2AA3C40700041CE9 /* MLKitBarcodeScanning */; };
+		ABBBB9D22AA3C40700041CE9 /* MLKitFaceDetection in Frameworks */ = {isa = PBXBuildFile; productRef = ABBBB9D12AA3C40700041CE9 /* MLKitFaceDetection */; };
+		ABBBB9D62AA3C8D700041CE9 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBBB9D52AA3C8D700041CE9 /* ConfirmView.swift */; };
+		ABBBB9D82AA3C8FF00041CE9 /* TextAreaCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBBB9D72AA3C8FF00041CE9 /* TextAreaCode.swift */; };
+		ABBBB9DC2AA47B4300041CE9 /* AISummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBBB9DB2AA47B4300041CE9 /* AISummaryView.swift */; };
 		ABFDF56A2A9B93A400E19464 /* MVP_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFDF5692A9B93A400E19464 /* MVP_App.swift */; };
 		ABFDF56C2A9B93A400E19464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFDF56B2A9B93A400E19464 /* ContentView.swift */; };
 		ABFDF56E2A9B93A500E19464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFDF56D2A9B93A500E19464 /* Assets.xcassets */; };
@@ -21,6 +26,9 @@
 /* Begin PBXFileReference section */
 		ABA1AE992AA0DA9500394191 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		ABBBB9C32AA3964300041CE9 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		ABBBB9D52AA3C8D700041CE9 /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
+		ABBBB9D72AA3C8FF00041CE9 /* TextAreaCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAreaCode.swift; sourceTree = "<group>"; };
+		ABBBB9DB2AA47B4300041CE9 /* AISummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISummaryView.swift; sourceTree = "<group>"; };
 		ABFDF5662A9B93A400E19464 /* MVP_.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP_.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFDF5692A9B93A400E19464 /* MVP_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVP_App.swift; sourceTree = "<group>"; };
 		ABFDF56B2A9B93A400E19464 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +43,8 @@
 			files = (
 				ABBBB9CA2AA3A0E100041CE9 /* SwiftyJSON in Frameworks */,
 				ABBBB9CD2AA3A1FE00041CE9 /* OpenAI in Frameworks */,
+				ABBBB9D22AA3C40700041CE9 /* MLKitFaceDetection in Frameworks */,
+				ABBBB9D02AA3C40700041CE9 /* MLKitBarcodeScanning in Frameworks */,
 				ABBBB9C72AA3A0A700041CE9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,7 +74,10 @@
 				ABFDF5692A9B93A400E19464 /* MVP_App.swift */,
 				ABFDF56B2A9B93A400E19464 /* ContentView.swift */,
 				ABA1AE992AA0DA9500394191 /* StartView.swift */,
+				ABBBB9D72AA3C8FF00041CE9 /* TextAreaCode.swift */,
+				ABBBB9D52AA3C8D700041CE9 /* ConfirmView.swift */,
 				ABBBB9C32AA3964300041CE9 /* CameraView.swift */,
+				ABBBB9DB2AA47B4300041CE9 /* AISummaryView.swift */,
 				ABFDF56D2A9B93A500E19464 /* Assets.xcassets */,
 				ABFDF56F2A9B93A500E19464 /* Preview Content */,
 			);
@@ -99,6 +112,8 @@
 				ABBBB9C62AA3A0A700041CE9 /* Alamofire */,
 				ABBBB9C92AA3A0E100041CE9 /* SwiftyJSON */,
 				ABBBB9CC2AA3A1FE00041CE9 /* OpenAI */,
+				ABBBB9CF2AA3C40700041CE9 /* MLKitBarcodeScanning */,
+				ABBBB9D12AA3C40700041CE9 /* MLKitFaceDetection */,
 			);
 			productName = MVP_;
 			productReference = ABFDF5662A9B93A400E19464 /* MVP_.app */;
@@ -132,6 +147,7 @@
 				ABBBB9C52AA3A0A700041CE9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				ABBBB9C82AA3A0E100041CE9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				ABBBB9CB2AA3A1FE00041CE9 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				ABBBB9CE2AA3C40700041CE9 /* XCRemoteSwiftPackageReference "google-mlkit-swiftpm" */,
 			);
 			productRefGroup = ABFDF5672A9B93A400E19464 /* Products */;
 			projectDirPath = "";
@@ -161,7 +177,10 @@
 			files = (
 				ABA1AE9A2AA0DA9500394191 /* StartView.swift in Sources */,
 				ABFDF56C2A9B93A400E19464 /* ContentView.swift in Sources */,
+				ABBBB9DC2AA47B4300041CE9 /* AISummaryView.swift in Sources */,
 				ABFDF56A2A9B93A400E19464 /* MVP_App.swift in Sources */,
+				ABBBB9D62AA3C8D700041CE9 /* ConfirmView.swift in Sources */,
+				ABBBB9D82AA3C8FF00041CE9 /* TextAreaCode.swift in Sources */,
 				ABBBB9C42AA3964300041CE9 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +313,8 @@
 				DEVELOPMENT_TEAM = C552WQXUWD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PanDora;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -324,6 +345,8 @@
 				DEVELOPMENT_TEAM = C552WQXUWD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PanDora;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -391,6 +414,14 @@
 				minimumVersion = 0.2.4;
 			};
 		};
+		ABBBB9CE2AA3C40700041CE9 /* XCRemoteSwiftPackageReference "google-mlkit-swiftpm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/d-date/google-mlkit-swiftpm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -408,6 +439,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ABBBB9CB2AA3A1FE00041CE9 /* XCRemoteSwiftPackageReference "OpenAI" */;
 			productName = OpenAI;
+		};
+		ABBBB9CF2AA3C40700041CE9 /* MLKitBarcodeScanning */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABBBB9CE2AA3C40700041CE9 /* XCRemoteSwiftPackageReference "google-mlkit-swiftpm" */;
+			productName = MLKitBarcodeScanning;
+		};
+		ABBBB9D12AA3C40700041CE9 /* MLKitFaceDetection */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABBBB9CE2AA3C40700041CE9 /* XCRemoteSwiftPackageReference "google-mlkit-swiftpm" */;
+			productName = MLKitFaceDetection;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
