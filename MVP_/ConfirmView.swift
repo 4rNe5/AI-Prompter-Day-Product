@@ -26,6 +26,8 @@ struct ConfirmView: View {
 }
 
 
-#Preview {
-    StartView()
+struct ConfirmView_Previews: PreviewProvider {
+    static var previews: some View {
+        ConfirmView(recognizedText:"")
+    }
 }

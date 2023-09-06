@@ -75,6 +75,8 @@ struct CameraView : UIViewRepresentable {
 
 }
 
-#Preview {
-    StartView()
+struct CameraView_Previews: PreviewProvider {
+    static var previews: some View {
+        StartView()
+    }
 }

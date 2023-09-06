@@ -47,9 +47,10 @@ struct StartView: View {
                 }
                 Button(action:{
                     Task {
-                        isSummarizing = true // Add this line
-                        summarizeAndParse(recognizedText: self.recognizedText)
-                        isSummarizing = false // Add this line
+//                        isSummarizing = true // Add this line
+//                        summarizeAndParse(recognizedText: self.recognizedText)
+//                        isSummarizing = false // Add this line
+                        summaryText = "요약된 택스트가 나옵니다!!"
                     }
                 }) {
                     Text("\(Image(systemName:"square.and.pencil.circle.fill"))   요약정리 시작하기")
